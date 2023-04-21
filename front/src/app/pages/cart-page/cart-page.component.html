@@ -1,0 +1,8 @@
+<div class="cart">
+  <div class="cart-form">
+    <app-cart-form></app-cart-form>
+  </div>
+  <div class="cart-items">
+    <app-cart-item *ngFor="let p of cartService.cartPurchases" [cartItem]="p"></app-cart-item>
+  </div>
+</div>

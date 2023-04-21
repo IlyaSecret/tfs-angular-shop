@@ -1,0 +1,31 @@
+<div class="cart-form">
+  <h1>Заказать</h1>
+  <form [formGroup]="form">
+    <div class="tui-form__row tui-form__row_multi-fields cart-form__inputs">
+        <tui-select
+          formControlName="country"
+        >
+          Страна
+          <input
+            tuiTextfield
+            placeholder="Выберите свою страну"
+          />
+          <tui-data-list-wrapper
+            *tuiDataList
+            [items]="countriesNames"
+          ></tui-data-list-wrapper>
+        </tui-select>
+        <tui-input formControlName="address">
+          Адрес доставки
+          <span class="tui-required"></span>
+        </tui-input>
+      <tui-input formControlName="email">Почта</tui-input>
+      <tui-input formControlName="username">Имя</tui-input>
+      <button tuiButton>Заказать</button>
+    </div>
+  </form>
+  <div>
+    <p>Общая суммка заказа: </p>
+    <app-cart-summary></app-cart-summary>
+  </div>
+</div>

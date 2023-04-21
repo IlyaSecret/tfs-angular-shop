@@ -1,0 +1,20 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 300px;
+  height: 300px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  padding: 10px;
+}
+.card__title {
+  align-self: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+.card__button {
+  align-self: end;
+}

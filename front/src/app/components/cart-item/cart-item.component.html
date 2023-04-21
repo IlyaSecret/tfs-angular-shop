@@ -1,0 +1,28 @@
+<div class="card">
+  <div class="card__button">
+    <button
+      tuiIconButton
+      icon="tuiIconClose"
+      size="m"
+      appearance="accent"
+      (click)="deleteItem()"
+    >
+    </button>
+  </div>
+  <div class="card__title">
+    {{cartItem.purchase.title}}
+  </div>
+  <div class="card__info">
+    <p class="card__price">Стоимость: {{cartItem.purchase.price}} ₽</p>
+    <div class="card__count" [formGroup]="form">
+      Количество:
+      <tui-input-count
+        (click)="onCountClick()"
+        tuiTextfieldSize="m"
+        [tuiTextfieldLabelOutside]="true"
+        formControlName="count"
+      >
+      </tui-input-count>
+    </div>
+  </div>
+</div>

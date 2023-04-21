@@ -1,0 +1,14 @@
+
+.nav {
+  display: flex;
+  grid-gap: 30px;
+  font-size: 20px;
+  color: black;
+  padding: 20px 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.5);
+  li:hover {
+    color: black;
+    cursor: pointer;
+    transition: 0.3s all;
+  }
+}
