@@ -3,6 +3,7 @@ import {ICartItem} from "../../../shared/models/ICartItem";
 import {CartService} from "../../../shared/services/cart.service";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CurrencyService} from "../../../shared/services/currency.service";
+import {SummaryService} from "../../../shared/services/summary.service";
 
 @Component({
   selector: 'app-cart-item',
@@ -11,30 +12,30 @@ import {CurrencyService} from "../../../shared/services/currency.service";
 })
 export class CartItemComponent implements OnInit{
   @Input() cartItem!: ICartItem;
-  form!: FormGroup;
 
-  constructor(public readonly cartService: CartService, private readonly currencyService: CurrencyService) {
-    
+  constructor(public readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summaryService: SummaryService) {
+
   }
 
   ngOnInit(): void {
-    this.form = new FormGroup({
-      count: new FormControl(this.cartItem.count, Validators.required)
-    })
-    const subscription = this.form.get('count')?.valueChanges.subscribe(el => {
-      this.currencyService.updateSumm();
-      subscription?.unsubscribe();
+    this.form.get('count')?.valueChanges.subscribe(el => {
+      this.summaryService.updateSumm(this.currencyService.coefficient, this.cartService.cartPurchases);
     })
   }
 
+  form = new FormGroup({
+    count: new FormControl(this.cartItem.count, Validators.required)
+  })
+
   onCountClick(): void{
+    // @ts-ignore
     this.cartItem.count =  this.form.get('count')?.value;
-    this.currencyService.updateSumm()
+    this.summaryService.updateSumm(this.currencyService.coefficient, this.cartService.cartPurchases);
   }
 
   deleteItem(): void {
     this.cartService.deletePurchase(this.cartItem.purchase.id)
-    this.currencyService.updateSumm();
+    this.summaryService.updateSumm(this.currencyService.coefficient, this.cartService.cartPurchases);
   }
 
 }

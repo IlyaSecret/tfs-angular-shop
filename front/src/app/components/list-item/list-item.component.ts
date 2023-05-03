@@ -3,15 +3,16 @@ import {IPurchase} from "../../../shared/models/IPurchase";
 import {FormControl, FormGroup, Validators} from "@angular/forms";
 import {CartService} from "../../../shared/services/cart.service";
 import {CurrencyService} from "../../../shared/services/currency.service";
+import {SummaryService} from "../../../shared/services/summary.service";
 
 @Component({
   selector: 'app-list-item',
   templateUrl: './list-item.component.html',
   styleUrls: ['./list-item.component.scss']
 })
-export class ListItemComponent {
+export class ListItemComponent{
   @Input() purchase!: IPurchase;
-  constructor(readonly cartService: CartService, readonly currencyService: CurrencyService) {
+  constructor(private readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summarySerivce: SummaryService) {
   }
 
   form: FormGroup = new FormGroup({
@@ -20,6 +21,6 @@ export class ListItemComponent {
 
   addItemToCart(): void {
     this.cartService.addToCart(this.purchase, this.form.get('count')?.value)
-    this.currencyService.updateSumm();
+    this.summarySerivce.updateSumm(this.currencyService.coefficient, this.cartService.cartPurchases);
   }
 }

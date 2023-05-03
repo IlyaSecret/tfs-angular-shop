@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {CurrencyService} from "../../../shared/services/currency.service";
+import {SummaryService} from "../../../shared/services/summary.service";
 
 @Component({
   selector: 'app-cart-summary',
@@ -7,5 +7,5 @@ import {CurrencyService} from "../../../shared/services/currency.service";
   styleUrls: ['./cart-summary.component.scss']
 })
 export class CartSummaryComponent {
-  constructor(readonly currencyService: CurrencyService) {}
+  constructor(public readonly summaryService: SummaryService) {}
 }

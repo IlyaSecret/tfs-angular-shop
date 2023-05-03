@@ -7,6 +7,6 @@ import {CartService} from "../../../shared/services/cart.service";
   styleUrls: ['./cart-page.component.scss']
 })
 export class CartPageComponent {
-  constructor(readonly cartService: CartService) {
+  constructor(public readonly cartService: CartService) {
   }
 }

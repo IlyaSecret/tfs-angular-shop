@@ -26,6 +26,8 @@
   </form>
   <div>
     <p>Общая суммка заказа: </p>
-    <app-cart-summary></app-cart-summary>
+    <div class="cart-summary">
+      <p>{{summarySerivce.summ | currency : to}}</p>
+    </div>
   </div>
 </div>
