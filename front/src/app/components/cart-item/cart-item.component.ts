@@ -12,9 +12,11 @@ import {SummaryService} from "../../../shared/services/summary.service";
 })
 export class CartItemComponent implements OnInit{
   @Input() cartItem!: ICartItem;
+  readonly form = new FormGroup({
+    count: new FormControl(this.cartItem.count, Validators.required)
+  })
 
-  constructor(public readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summaryService: SummaryService) {
-
+  constructor(private readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summaryService: SummaryService) {
   }
 
   ngOnInit(): void {
@@ -23,12 +25,7 @@ export class CartItemComponent implements OnInit{
     })
   }
 
-  form = new FormGroup({
-    count: new FormControl(this.cartItem.count, Validators.required)
-  })
-
   onCountClick(): void{
-    // @ts-ignore
     this.cartItem.count =  this.form.get('count')?.value;
     this.summaryService.updateSumm(this.currencyService.coefficient, this.cartService.cartPurchases);
   }

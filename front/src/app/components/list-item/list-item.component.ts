@@ -12,12 +12,12 @@ import {SummaryService} from "../../../shared/services/summary.service";
 })
 export class ListItemComponent{
   @Input() purchase!: IPurchase;
-  constructor(private readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summarySerivce: SummaryService) {
-  }
-
-  form: FormGroup = new FormGroup({
+  readonly form: FormGroup = new FormGroup({
     count: new FormControl(1, Validators.required)
   });
+
+  constructor(private readonly cartService: CartService, private readonly currencyService: CurrencyService, private readonly summarySerivce: SummaryService) {
+  }
 
   addItemToCart(): void {
     this.cartService.addToCart(this.purchase, this.form.get('count')?.value)

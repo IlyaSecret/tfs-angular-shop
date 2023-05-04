@@ -4,7 +4,6 @@ import { CartPageComponent } from './cart-page.component';
 import {ListItemModule} from "../../components/list-item/list-item.module";
 import {CartItemModule} from "../../components/cart-item/cart-item.module";
 import {CartFormModule} from "../../components/cart-form/cart-form.module";
-import {CartSummaryModule} from "../../components/cart-summary/cart-summary.module";
 
 
 
@@ -16,8 +15,7 @@ import {CartSummaryModule} from "../../components/cart-summary/cart-summary.modu
     CommonModule,
     ListItemModule,
     CartItemModule,
-    CartFormModule,
-    CartSummaryModule
+    CartFormModule
   ]
 })
 export class CartPageModule { }
